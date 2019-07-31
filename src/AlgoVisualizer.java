@@ -3,11 +3,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 public class AlgoVisualizer {
 
     // TODO: 创建自己的数据
-    private static int DELEY=10;
+    private static int DELEY=40;
     private int[] money;        // 数据
     private AlgoFrame frame;    // 视图
 
@@ -39,16 +40,19 @@ public class AlgoVisualizer {
         // TODO: 编写自己的动画逻辑
 
         while (true){
+            Arrays.sort(money);
             frame.render(money);
             AlgoVisHelper.pause(DELEY);
 
-            for(int i=0;i<money.length;i++)
-                if(money[i]>0){
-                    int j =(int)(Math.random()*100);
-                    //System.out.println((int)Math.random()*100);
-                    money[i] -= 1;
-                    money[j] += 1;
-                }
+            for(int k=0;k<50;k++) {
+                for (int i = 0; i < money.length; i++)
+                    //if (money[i] > 0)
+                    {
+                        int j = (int) (Math.random() * 100);
+                        money[i] -= 1;
+                        money[j] += 1;
+                    }
+            }
         }
     }
 
